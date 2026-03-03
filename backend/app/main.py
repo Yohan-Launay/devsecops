@@ -62,9 +62,7 @@ def list_tasks(db: Session = Depends(get_db)):
 @app.post("/tasks", response_model=TaskOut, status_code=201)
 def create_task(payload: TaskCreate, db: Session = Depends(get_db)):
     task = Task(
-        title=payload.title.strip(), 
-        description=payload.description, 
-        status="TODO"
+        title=payload.title.strip(), description=payload.description, status="TODO"
     )
     db.add(task)
     db.commit()
@@ -75,8 +73,7 @@ def create_task(payload: TaskCreate, db: Session = Depends(get_db)):
 @app.get("/tasks/search", response_model=list[TaskOut])
 def search_tasks(q: str = Query(""), db: Session = Depends(get_db)):
     sql = text(
-        f"SELECT * FROM tasks "
-        f"WHERE title LIKE '%{q}%' OR description LIKE '%{q}%'"
+        f"SELECT * FROM tasks " f"WHERE title LIKE '%{q}%' OR description LIKE '%{q}%'"
     )
 
     rows = db.execute(sql).mappings().all()

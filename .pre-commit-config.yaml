@@ -1,18 +1,18 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.6.0
     hooks:
-      - id: trailing-whitespace  # Supprime les espaces inutiles
-      - id: end-of-file-fixer    # Ajoute une ligne vide à la fin des fichiers
-      - id: check-yaml           # Vérifie la syntaxe des fichiers YAML
-      - id: check-added-large-files  # Empêche l'ajout de gros fichiers
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
 
   - repo: https://github.com/psf/black
-    rev: 23.12.1
+    rev: 24.3.0
     hooks:
-      - id: black  # Formatte le code Python selon PEP 8
+      - id: black
 
-  - repo: https://github.com/pycqa/flake8
-    rev: 6.1.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.4
     hooks:
-      - id: flake8  # Vérifie la qualité du code Python
+      - id: ruff
+      - id: ruff-format
